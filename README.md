@@ -19,38 +19,19 @@ Le système permet de gérer :
 ## 📁 Structure du dépôt
 
 UCMS/
-├── typesandtables : contient la creation de tout les types et toutes les tables
+├── typesandtables.sql : contient la creation de tout les types et toutes les tables
 │
-├── methodes/
-│ ├── course_methods.sql
-│ └── procedures_utilitaires.sql
+├── methodes.sql
 │
-├── procedures/
-│ ├── course_methods.sql
-│ └── procedures_utilitaires.sql
+├── procedures.sql
 │
-├── triggers/
-│ ├── trigger_no_duplicate_enrollments.sql
-│ ├── trigger_course_deletion_protection.sql
-│ ├── trigger_classroom_capacity_check.sql
-│ └── trigger_time_conflict_check.sql
+├── rules.sql : triggers
 │
-├── views/
-│ ├── view_enrolled_students.sql
-│ ├── view_transcript.sql
-│ ├── view_weekly_schedule.sql
-│ ├── view_course_student_counts.sql
-│ ├── view_students_no_submissions.sql
-│ ├── view_top_student.sql
-│ └── view_average_grades.sql
+├── views.sql
 │
-├── tests/
-│ ├── insert_sample_data.sql
-│ ├── test_triggers.sql
-│ ├── test_views.sql
-│ └── test_procedures.sql
+├── tests....sql: il  a un fichier test pour chaque parie 
 │
-├── final_document/
+├── final_document:
 │ ├── final_document_declaration.sql
 │ ├── final_document_tests.sql
 │ └── final_document.sql
