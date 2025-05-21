@@ -102,7 +102,7 @@ Des tests unitaires sont fournis dans :
 |--------|-------------|
 | `typesandtables/*.sql` | Création des types objets et tables relationnelles |
 | `methodes/*.sql` | Méthodes objets |
-| `procedures/*.sql` | les proceures |
+| `procedures/*.sql` | les procedures |
 | `rules/*.sql` | Déclencheurs (triggers) liés aux règles métiers |
 | `views/*.sql` | Vues pour accès facilité aux données |
 | `test.../*.sql` | Données d'exemple et scénarios de test pour chaque partie|
