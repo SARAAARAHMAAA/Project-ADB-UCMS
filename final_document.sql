@@ -954,3 +954,60 @@ SELECT * FROM v_top_student;
 
 -- Moyenne par cours
 SELECT * FROM v_average_grade_per_course;
+
+
+
+-- plus plus plus ---
+-- Doit échouer avec une erreur d'inscription déjà existante
+BEGIN
+  inscrire_etudiant(1001, 501);
+END;
+/
+-- Note invalide (supérieure à 20)
+BEGIN
+  attribuer_note(1001, 301, 25);
+END;
+/
+-- Doit échouer car l'ID du devoir existe déjà
+BEGIN
+  creer_assignment(
+    301,
+    'TP redondant',
+    'Doublon de test.',
+    TO_DATE('2025-06-10', 'YYYY-MM-DD'),
+    501
+  );
+END;
+/
+-- Ajout d'un deuxième devoir au même cours
+BEGIN
+  ajouter_assignment(
+    501,
+    302,
+    'Mini-projet SQL',
+    'Conception d''une base avec objets et triggers.',
+    TO_DATE('2025-06-15', 'YYYY-MM-DD')
+  );
+END;
+/
+BEGIN
+  enregistrer_note_assignment(1001, 302, 17);
+END;
+/
+-- Doit échouer à cause du trigger check_assignment_course
+INSERT INTO Assignment (
+  assignment_id, title, description, due_date, course_ref
+) VALUES (
+  400,
+  'Orphelin',
+  'Devoir sans cours',
+  TO_DATE('2025-07-01', 'YYYY-MM-DD'),
+  NULL
+);
+/
+-- Doit échouer avec trigger prevent_course_deletion
+DELETE FROM Course WHERE course_id = 501;
+/
+-- Suppression d’un devoir spécifique
+DELETE FROM Assignment WHERE assignment_id = 302;
+/
