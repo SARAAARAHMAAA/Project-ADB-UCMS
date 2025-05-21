@@ -1,118 +1,141 @@
-# Project-ADB-UCMS
-University Course Management System (UCMS)
-📘 Description
-Ce projet implémente un système de gestion des cours universitaires (UCMS) à l’aide d’un SGBD Oracle SQL3 en exploitant des fonctionnalités avancées object-relationnelles : types objets, types REF, tables imbriquées, vues, triggers, méthodes, procédures, etc.
+# 🎓 University Course Management System (UCMS)
 
-Le système permet de gérer efficacement :
+## 📘 Description
 
-Étudiants
+Ce projet implémente un **système de gestion des cours universitaires** (UCMS) à l’aide d’un **SGBD Oracle SQL3**, en exploitant des **fonctionnalités avancées object-relationnelles** : types objets, types REF, tables imbriquées, vues, triggers, méthodes, procédures, etc.
 
-Professeurs
+Le système permet de gérer :
+- Étudiants
+- Professeurs
+- Départements
+- Cours
+- Inscriptions
+- Salles de cours
+- Devoirs
+- Notes
 
-Départements
+---
 
-Cours
+## 📁 Structure du dépôt
 
-Inscriptions
-
-Salles de cours
-
-Devoirs
-
-Notes
-
-📂 Structure du dépôt
-pgsql
-Copier
-Modifier
 UCMS/
-├── types_et_tables/
-│   ├── create_object_types.sql
-│   ├── create_tables.sql
-│   └── create_relationships.sql
+├── typesandtables : contient la creation de tout les types et toutes les tables
 │
-├── methodes_procedures/
-│   ├── course_methods.sql
-│   └── procedures_utilitaires.sql
+├── methodes/
+│ ├── course_methods.sql
+│ └── procedures_utilitaires.sql
+│
+├── procedures/
+│ ├── course_methods.sql
+│ └── procedures_utilitaires.sql
 │
 ├── triggers/
-│   ├── trigger_no_duplicate_enrollments.sql
-│   ├── trigger_course_deletion_protection.sql
-│   ├── trigger_classroom_capacity_check.sql
-│   └── trigger_time_conflict_check.sql
+│ ├── trigger_no_duplicate_enrollments.sql
+│ ├── trigger_course_deletion_protection.sql
+│ ├── trigger_classroom_capacity_check.sql
+│ └── trigger_time_conflict_check.sql
 │
 ├── views/
-│   ├── view_enrolled_students.sql
-│   ├── view_transcript.sql
-│   ├── view_weekly_schedule.sql
-│   ├── view_course_student_counts.sql
-│   ├── view_students_no_submissions.sql
-│   ├── view_top_student.sql
-│   └── view_average_grades.sql
+│ ├── view_enrolled_students.sql
+│ ├── view_transcript.sql
+│ ├── view_weekly_schedule.sql
+│ ├── view_course_student_counts.sql
+│ ├── view_students_no_submissions.sql
+│ ├── view_top_student.sql
+│ └── view_average_grades.sql
 │
 ├── tests/
-│   ├── insert_sample_data.sql
-│   ├── test_triggers.sql
-│   ├── test_views.sql
-│   └── test_procedures.sql
+│ ├── insert_sample_data.sql
+│ ├── test_triggers.sql
+│ ├── test_views.sql
+│ └── test_procedures.sql
 │
 ├── final_document/
-│   ├── final_document_declaration.sql
-│   ├── final_document_tests.sql
-│   └── final_document.sql
+│ ├── final_document_declaration.sql
+│ ├── final_document_tests.sql
+│ └── final_document.sql
 │
 └── README.md
-▶️ Exécution
-📌 Fichier principal à exécuter :
-final_document/final_document.sql
 
-Ce fichier regroupe toutes les étapes d’installation et de test pour dérouler entièrement le projet :
+---
 
-Création des types, tables, vues, triggers et procédures.
+## ▶️ Exécution
 
-Insertion de données d'exemple.
+### 📌 Fichier principal à exécuter :
 
-Tests de validation.
+**`final_document/final_document.sql`**
 
-⚠️ Ce fichier contient aussi quelques cas de test par défaut. Vous pouvez le modifier pour ajouter vos propres scénarios de test.
+Ce fichier est le **script central**. Il regroupe toutes les étapes nécessaires pour exécuter le projet :
+- Création des types, tables, vues, triggers, et procédures
+- Insertion de données d'exemple
+- Tests automatiques
 
-✅ Fonctionnalités principales
-Détection des conflits d’horaire entre cours dans une même salle.
+> 🔧 Vous pouvez **modifier ce fichier** pour ajouter d'autres scénarios de test si nécessaire.
 
-Validation de capacité des salles de classe.
+---
 
-Protection contre la suppression de cours avec des étudiants inscrits.
+## ✅ Fonctionnalités prises en charge
 
-Gestion des notes et des devoirs par étudiant et par cours.
+- Détection des conflits horaires de cours dans une même salle
+- Validation de la capacité des salles de classe
+- Interdiction de suppression d’un cours avec des étudiants inscrits
+- Inscription unique d’un étudiant à un cours (enforcement via trigger)
+- Affectation d’un chef de département unique (1 seul chef par département)
+- Assignation des devoirs par cours, notés par les professeurs
+- Vues dynamiques pour : bulletins, emplois du temps, statistiques, etc.
+- Moyenne des notes, étudiants non soumis, top étudiant, etc.
+- Utilisation de types objets, REF, TABLE() pour manipulations avancées
 
-Vues dynamiques pour les transcriptions, les emplois du temps, les statistiques de cours, etc.
+---
 
-Utilisation de REF, TABLE() et méthodes d’objet pour les requêtes avancées.
+## 🧪 Jeux de tests
 
-📜 Liste des livrables
-Fichier	Description
-types_et_tables/*.sql	Création des types objets et tables relationnelles
-methodes_procedures/*.sql	Définition de méthodes et procédures liées aux objets
-triggers/*.sql	Triggers pour les règles métier et contraintes
-views/*.sql	Création des vues demandées
-tests/*.sql	Insertion de données d'exemple et jeux de tests
-final_document_declaration.sql	Déclarations globales
-final_document_tests.sql	Tests regroupés
-final_document.sql	Script principal à exécuter
+Des tests unitaires sont fournis dans :
+- les fichiers tests pour chaque section pour les données, triggers, vues, procédures
+- `final_document_tests.sql` pour un regroupement simplifié
 
-🔎 Auteurs
-Étudiantes :
-  -Sadaoui Sara Rahma
-  -Dahmani Naila 
-  -Chetouh Amira
+---
 
-Année : 2024/2025
+## 📜 Livrables
 
-Université : USTHB
+| Fichier | Description |
+|--------|-------------|
+| `typesandtables/*.sql` | Création des types objets et tables relationnelles |
+| `methodes/*.sql` | Méthodes objets |
+| `procedures/*.sql` | les proceures |
+| `rules/*.sql` | Déclencheurs (triggers) liés aux règles métiers |
+| `views/*.sql` | Vues pour accès facilité aux données |
+| `test.../*.sql` | Données d'exemple et scénarios de test pour chaque partie|
+| `final_document/*.sql` | Scripts de déploiement final, à exécuter dans l'ordre |
+| `README.md` | Documentation du projet |
 
-Module : Base de Données Avancée (SQL3)
+---
 
-🛠️ Prérequis
-Oracle SQL (version avec support des objets)
+## 🏫 Informations sur le projet
 
-SQL*Plus, SQL Developer, ou tout autre outil Oracle compatible
+- 🎓 Université : USTHB – Faculté d’Informatique
+- 🧑‍🎓 Étudiantes:
+       -Sadaoui Sara Rahma
+       -Dahmani Naila
+       -Chetouh Amira
+- 📅 Année : 2024/2025
+- 📚 Module : Base de Données Avancée (SQL3)
+- 👨‍🏫 Encadrant : *[Nom de l’enseignant]*
+
+---
+
+## 🛠️ Prérequis techniques
+
+- Oracle SQL (avec support Oracle Object-Relational SQL)
+- Outils recommandés : SQL*Plus, Oracle SQL Developer, ou équivalent
+
+---
+
+## 📝 Remarques
+
+- Le projet respecte les contraintes métier spécifiées dans le cahier des charges.
+- Le code est commenté et modulaire pour faciliter la compréhension.
+- L’exécution complète peut être faite via le fichier :  
+  👉 **`final_document.sql`**
+
+---
